@@ -1,7 +1,7 @@
 //array of games
 
-var games = ["Doom", "Sonic", "Quake", "Mortal+Kombat", "Super+Mario", 
-            "Super+Metroid", "Crono+Trigger"];
+var games = ["Doom", "Sonic", "Quake", "Mortal Kombat", "Super Mario", 
+            "Super Metroid", "Crono Trigger"];
 
 //random game from array
 
@@ -31,7 +31,7 @@ var lettersLeft = game.length;
 
 var gameStart = false;
 
-//make a function to reset the game 
+//make a function to reset the game to the inital state when win or lose
 
 function reset() {
     gameStart = true;
@@ -39,13 +39,18 @@ function reset() {
     remainingLetters = game.length;
     answerArray = [];
     for (var i = 0; i < game.length; i++) {
-        if (game[i] === "+") {
+        if (game[i] === " ") {
             answerArray[i] = "&nbsp;";
         } else {
             answerArray[i] = "_";
         }
     };
     guessesLeft = 9;
+    displayGuessesLeft();
+    incorrectGuessesMade = [];
+    displayGuessesMade()
+    displayCurrentGame();
+    answer.textContent = "";
     console.log(game)
 }
 //if gameStart is true then check letter array else reset
@@ -100,7 +105,7 @@ function addLetter(guess) {
             answerArray[k] = guess.key.toUpperCase();
             displayCurrentGame();
             lettersLeft--;
-            if (lettersLeft ===0) {
+            if (lettersLeft === 0) {
                 wins++;
             }
         }
