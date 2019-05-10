@@ -27,14 +27,34 @@ function reset() {
     remainingLetters = game.length;
 }
 
-console.log(game)
-//randomly select word
+//if gameStart is true then check letter array else reset
 
-//have blanks show number of letters in word
-    //count number of letters in selected word
-    //create _'s for number of letters with for loop
-    //game will start when the player pressed enter
-    //for loop through word 
+document.addEventListener("keyup", function(event) {
+    if (gameStart===true) {
+        firstCheck(event) 
+    }
+    else {
+        reset()
+    }
+});
+
+//Setup firstCheck array
+
+var alphabet = ["a", "b", "c", "d", "e", "f", "g", 
+                "h", "i", "j", "k", "l", "m", "n", 
+                "o", "p", "q", "r", "s", "t", "u", 
+                "v", "w", "x", "y", "z"];
+
+//Function to check if the user input is in array. 
+//If so, check if letter is in the game.
+
+function firstCheck(guess) {
+    if (alphabet.indexOf(guess.key) > -1){
+        correctCheck(guess)
+    }
+}
+console.log(guess)
+
 
 
 
