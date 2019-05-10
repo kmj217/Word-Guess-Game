@@ -35,8 +35,12 @@ var gameStart = false;
 
 function reset() {
     gameStart = true;
+
     game = games[Math.floor(Math.random()* games.length)];
+
     remainingLetters = game.length;
+
+    answerArray = []; 
 }
 
 //if gameStart is true then check letter array else reset
@@ -72,7 +76,7 @@ function correctCheck(guess) {
     if (game.indexOf(guess.key) > -1){
         correctGuess(guess);
     } else {
-        incorrectguess(guess);
+        incorrectGuess(guess);
     }
 }
 
@@ -104,3 +108,43 @@ function displayCurrentGame() {
 
 }
 
+function incorrectGuess(guess) {
+    if (incorrectGuessesMade.indexOf(guess.key.toUpperCase()) < 0) {
+        addWrongLetter(guess);
+    }
+}
+
+function addWrongLetter(guess) {
+    incorrectGuessesMade.push(guess.key.toUpperCase());
+    displayGuessesMade();
+    guessesLeft--;
+    displayGuessesLeft();
+    if (guessesLeft === 0) {
+        displayAnswer();
+    }
+}
+
+function displayWins() {
+
+    var winsDisplay = document.querySelector("#wins");
+
+    winsDisplay.textContent = winScore;
+
+}
+
+
+function displayGuessesMade() {
+
+    var guessesMadeDisplay = document.querySelector("#guesses");
+
+    guessesMadeDisplay.textContent = incorrectGuessesMade.join(", ");
+
+}
+
+
+function displayGuessesLeft() {
+
+    var guessesLeftDisplay = document.querySelector("#guessesleft");
+
+    guessesLeftDisplay.textContent = guessesLeft;
+}
