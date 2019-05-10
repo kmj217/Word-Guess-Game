@@ -1,11 +1,23 @@
 //array of games
 
-var games = ["Mortal Kombat", "Super Mario", "Doom", "Sonic", 
-            "Quake", "Super Metroid", "Crono Trigger"];
+var games = ["Mortal+Kombat", "Super+Mario", "Doom", "Sonic", 
+            "Quake", "Super+Metroid", "Crono+Trigger"];
 
 //random game from array
 
 var game = games[Math.floor(Math.random()* games.length)];
+
+//incorrect guess array
+
+var incorrectGuessesMade = [];
+
+//Guesses remaining variable
+
+var guessesLeft = 9;
+
+//wins variable
+
+var wins = 0;
 
 //use _'s to show length of game
 
@@ -64,7 +76,31 @@ function correctCheck(guess) {
     }
 }
 
+//Functions to add letter to correct guesses
+
+function correctGuess(guess) {
+    if (answerArray.indexOf(guess.key.toUpperCase()) < 0) {
+        addLetter(guess)
+    }
+}
+
+function addLetter(guess) {
+    for (var i = 0; i < game.length; i++) {
+        if (guess.key === game [i]) {
+            answerArray[i] = guess.key.toUpperCase();
+            displayCurrentGame();
+            letterLeft--;
+            if (lettersLeft ===0) {
+                wins++;
+            }
+        }
+    }
+}
 
 
+function displayCurrentGame() {
+    var currentGameDisplay = document.querySelector("#currentgame");
+    currentGameDisplay.innerHTML = answerArray.join(" ");
 
+}
 
