@@ -6,7 +6,7 @@ body {
     margin: 15px;
     padding: 20px;
     font-size: 4em;
-    background: rgba(250, 5, 5, 0.6);
+    background: rgba(250, 5, 5, 0.7);
     font-family: 'Gugi', cursive;
     border: solid 2px rgba(50, 0, 0, 0.7);
     border-radius: 10px;
@@ -16,9 +16,20 @@ body {
     margin: 15px;
     padding: 20px;
     font-size: 2em;
-    background: rgba(250, 5, 5, 0.8);
+    background: rgba(5, 5, 5, 0.8);
     font-family: 'Gugi', cursive;
     border: solid 2px rgba(50, 0, 0, 0.7);
     border-radius: 10px;
     text-align: center;
+    color: white
+}
+h2 {
+    line-height: 2em;
+    font-size: 1.2em;
+}
+h3 {
+    line-height: 1.2em
+}
+#currentgame {
+    padding-bottom: 0.5em
 }
