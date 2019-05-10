@@ -1,7 +1,7 @@
 //array of games
 
-var games = ["Mortal+Kombat", "Super+Mario", "Doom", "Sonic", 
-            "Quake", "Super+Metroid", "Crono+Trigger"];
+var games = ["Doom", "Sonic", "Quake", "Mortal+Kombat", "Super+Mario", 
+            "Super+Metroid", "Crono+Trigger"];
 
 //random game from array
 
@@ -25,7 +25,7 @@ var answerArray =[];
 
 //variable for remaining letters
 
-var remainingLetters = game.length;
+var lettersLeft = game.length;
 
 //variable to start and stop game
 
@@ -44,15 +44,16 @@ function reset() {
         } else {
             answerArray[i] = "_";
         }
-    }
+    };
+    guessesLeft = 9;
+    console.log(game)
 }
-
-console.log(game)
 //if gameStart is true then check letter array else reset
 
 document.addEventListener("keyup", function(event) {
     if (gameStart===true) {
-        firstCheck(event) 
+        firstCheck(event);
+        displayCurrentGame();
     }
     else {
         reset()
@@ -94,9 +95,9 @@ function correctGuess(guess) {
 }
 
 function addLetter(guess) {
-    for (var i = 0; i < game.length; i++) {
-        if (guess.key === game[i]) {
-            answerArray[i] = guess.key.toUpperCase();
+    for (var k = 0; k < game.length; k++) {
+        if (guess.key === game[k]) {
+            answerArray[k] = guess.key.toUpperCase();
             displayCurrentGame();
             lettersLeft--;
             if (lettersLeft ===0) {
@@ -126,6 +127,7 @@ function addWrongLetter(guess) {
     displayGuessesLeft();
     if (guessesLeft === 0) {
         displayAnswer();
+        reset();
     }
 }
 
@@ -144,4 +146,10 @@ function displayGuessesMade() {
 function displayGuessesLeft() {
     var guessesLeftDisplay = document.querySelector("#guessesleft");
     guessesLeftDisplay.textContent = guessesLeft;
+}
+
+
+function displayAnswer() {
+    var answer = document.querySelector("#answer");
+    answer.textContent = game.toUpperCase();
 }
