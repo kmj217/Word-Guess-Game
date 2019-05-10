@@ -138,7 +138,9 @@ function addWrongLetter(guess) {
     displayGuessesLeft();
     if (guessesLeft === 0) {
         losses++;
-        reset();
+        gameStart = false;
+        var lost = document.getElementById("losses");
+        lost.innerHTML = losses;
     }
 }
 
