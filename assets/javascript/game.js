@@ -19,7 +19,7 @@ var guessesLeft = 9;
 
 var wins = 0;
 
-//use _'s to show length of game
+//Create array for answer
 
 var answerArray =[];
 
@@ -35,14 +35,19 @@ var gameStart = false;
 
 function reset() {
     gameStart = true;
-
     game = games[Math.floor(Math.random()* games.length)];
-
     remainingLetters = game.length;
-
-    answerArray = []; 
+    answerArray = [];
+    for (var i = 0; i < game.length; i++) {
+        if (game[i] === "+") {
+            answerArray[i] = "&nbsp;";
+        } else {
+            answerArray[i] = "_";
+        }
+    }
 }
 
+console.log(game)
 //if gameStart is true then check letter array else reset
 
 document.addEventListener("keyup", function(event) {
@@ -90,10 +95,10 @@ function correctGuess(guess) {
 
 function addLetter(guess) {
     for (var i = 0; i < game.length; i++) {
-        if (guess.key === game [i]) {
+        if (guess.key === game[i]) {
             answerArray[i] = guess.key.toUpperCase();
             displayCurrentGame();
-            letterLeft--;
+            lettersLeft--;
             if (lettersLeft ===0) {
                 wins++;
             }
@@ -125,26 +130,18 @@ function addWrongLetter(guess) {
 }
 
 function displayWins() {
-
     var winsDisplay = document.querySelector("#wins");
-
     winsDisplay.textContent = winScore;
-
 }
 
 
 function displayGuessesMade() {
-
     var guessesMadeDisplay = document.querySelector("#guesses");
-
     guessesMadeDisplay.textContent = incorrectGuessesMade.join(", ");
-
 }
 
 
 function displayGuessesLeft() {
-
     var guessesLeftDisplay = document.querySelector("#guessesleft");
-
     guessesLeftDisplay.textContent = guessesLeft;
 }
