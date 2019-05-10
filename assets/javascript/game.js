@@ -37,7 +37,7 @@ var gameStart = false;
 function reset() {
     gameStart = true;
     game = games[Math.floor(Math.random()* games.length)];
-    remainingLetters = game.length;
+    lettersLeft = game.length;
     answerArray = [];
     for (var i = 0; i < game.length; i++) {
         if (game[i] === " ") {
@@ -53,8 +53,8 @@ function reset() {
     displayCurrentGame();
     answer.textContent = "";
     hideTitle();
-    showHint();
     console.log(game)
+    console.log(lettersLeft)
 }
 //if gameStart is true then check letter array else reset
 
