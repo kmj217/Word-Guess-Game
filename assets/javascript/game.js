@@ -53,7 +53,16 @@ function firstCheck(guess) {
         correctCheck(guess)
     }
 }
-console.log(guess)
+
+//Function to check if guess is correct
+
+function correctCheck(guess) {
+    if (game.indexOf(guess.key) > -1){
+        correctGuess(guess);
+    } else {
+        incorrectguess(guess);
+    }
+}
 
 
 
