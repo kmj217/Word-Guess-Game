@@ -1,7 +1,7 @@
 //array of games
 
-var games = ["Doom", "Sonic", "Quake", "Mortal Kombat", "Super Mario", 
-            "Super Metroid", "Crono Trigger"];
+var games = ["doom", "sonic", "quake", "mortal kombat", "super mario", 
+            "super metroid", "crono trigger"];
 
 //random game from array
 
@@ -15,9 +15,10 @@ var incorrectGuessesMade = [];
 
 var guessesLeft = 9;
 
-//wins variable
+//wins/losses variable
 
 var wins = 0;
+var losses = 0;
 
 //Create array for answer
 
@@ -51,6 +52,8 @@ function reset() {
     displayGuessesMade()
     displayCurrentGame();
     answer.textContent = "";
+    hideTitle();
+    showHint();
     console.log(game)
 }
 //if gameStart is true then check letter array else reset
@@ -76,7 +79,7 @@ var alphabet = ["a", "b", "c", "d", "e", "f", "g",
 //If so, check if letter is in the game.
 
 function firstCheck(guess) {
-    if (alphabet.indexOf(guess.key) > -1){
+    if (alphabet.indexOf(guess.key) > -1) {
         correctCheck(guess)
     }
 }
@@ -84,7 +87,7 @@ function firstCheck(guess) {
 //Function to check if guess is correct
 
 function correctCheck(guess) {
-    if (game.indexOf(guess.key) > -1){
+    if (game.indexOf(guess.key) > -1) {
         correctGuess(guess);
     } else {
         incorrectGuess(guess);
@@ -131,7 +134,7 @@ function addWrongLetter(guess) {
     guessesLeft--;
     displayGuessesLeft();
     if (guessesLeft === 0) {
-        displayAnswer();
+        losses++;
         reset();
     }
 }
@@ -157,4 +160,9 @@ function displayGuessesLeft() {
 function displayAnswer() {
     var answer = document.querySelector("#answer");
     answer.textContent = game.toUpperCase();
+}
+
+function hideTitle() {
+    var link = document.getElementById("hide");
+    link.style.visibility = "hidden";
 }
