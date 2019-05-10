@@ -1,7 +1,7 @@
 //array of games
 
-var games = ["doom", "sonic", "quake", "mortal kombat", "super mario", 
-            "super metroid", "crono trigger"];
+var games = ["doom", "sonic", "quake", "zelda", "mario", 
+            "metroid", "goldeneye"];
 
 //random game from array
 
@@ -110,6 +110,9 @@ function addLetter(guess) {
             lettersLeft--;
             if (lettersLeft === 0) {
                 wins++;
+                gameStart = false;
+                var won = document.getElementById("wins");
+                won.innerHTML = wins
             }
         }
     }
