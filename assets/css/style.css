@@ -1,0 +1,24 @@
+body {
+    background-image: url(../images/background.jpg)
+}
+
+.heading {
+    margin: 15px;
+    padding: 20px;
+    font-size: 4em;
+    background: rgba(250, 5, 5, 0.6);
+    font-family: 'Gugi', cursive;
+    border: solid 2px rgba(50, 0, 0, 0.7);
+    border-radius: 10px;
+    text-align: center;
+}
+.container {
+    margin: 15px;
+    padding: 20px;
+    font-size: 2em;
+    background: rgba(250, 5, 5, 0.8);
+    font-family: 'Gugi', cursive;
+    border: solid 2px rgba(50, 0, 0, 0.7);
+    border-radius: 10px;
+    text-align: center;
+}
