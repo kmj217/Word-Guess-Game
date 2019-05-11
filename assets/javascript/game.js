@@ -13,7 +13,7 @@ var incorrectGuessesMade = [];
 
 //Guesses remaining variable
 
-var guessesLeft = 9;
+var guessesLeft = 6;
 
 //wins/losses variable
 
@@ -46,7 +46,7 @@ function reset() {
             answerArray[i] = "_";
         }
     };
-    guessesLeft = 9;
+    guessesLeft = 6;
     displayGuessesLeft();
     incorrectGuessesMade = [];
     displayGuessesMade()
@@ -139,6 +139,7 @@ function addWrongLetter(guess) {
     if (guessesLeft === 0) {
         losses++;
         gameStart = false;
+        displayAnswer();
         var lost = document.getElementById("losses");
         lost.innerHTML = losses;
     }
@@ -163,7 +164,7 @@ function displayGuessesLeft() {
 
 
 function displayAnswer() {
-    var answer = document.querySelector("#answer");
+    var answer = document.getElementById("answer");
     answer.textContent = game.toUpperCase();
 }
 
